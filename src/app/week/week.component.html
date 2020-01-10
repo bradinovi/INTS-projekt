@@ -1,0 +1,13 @@
+<div>
+    <input class="box__file" type="file" #filepicker multiple (change)="fileInputChange($event)" />
+</div>
+<br>
+<button (click)="onPrev()">Prev</button>
+<button (click)="onNext()">Next</button>
+<br>
+{{postition + 1}} / {{sviRasporedi.length}}
+<br>
+
+
+<mwl-calendar-week-view [viewDate]="viewDate" [daysInWeek]="daysInWeek" [events]="events" [dayStartHour]="startOfDay">
+</mwl-calendar-week-view>

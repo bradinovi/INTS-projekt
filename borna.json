@@ -1,0 +1,1162 @@
+[
+    {
+        "fit": 579.501089325051,
+        "hard_dev": 0,
+        "hard_pos": [],
+        "jedinka": [
+            {
+                "dan": 4,
+                "dvorana": "D1",
+                "grupa": "G1",
+                "kolegij": "Kolegij1",
+                "profesor": "Ime1 Prezime1",
+                "termin": [
+                    9,
+                    10
+                ]
+            },
+            {
+                "dan": 2,
+                "dvorana": "D1",
+                "grupa": "G2",
+                "kolegij": "Kolegij2",
+                "profesor": "Ime1 Prezime1",
+                "termin": [
+                    8,
+                    9,
+                    7
+                ]
+            },
+            {
+                "dan": 5,
+                "dvorana": "D3",
+                "grupa": "G3",
+                "kolegij": "Kolegij5",
+                "profesor": "Ime2 Prezime2",
+                "termin": [
+                    8,
+                    9
+                ]
+            },
+            {
+                "dan": 1,
+                "dvorana": "D4",
+                "grupa": "G2",
+                "kolegij": "Kolegij1",
+                "profesor": "Ime3 Prezime3",
+                "termin": [
+                    9,
+                    10,
+                    11
+                ]
+            },
+            {
+                "dan": 4,
+                "dvorana": "D2",
+                "grupa": "G5",
+                "kolegij": "Kolegij2",
+                "profesor": "Ime5 Prezime5",
+                "termin": [
+                    8,
+                    7
+                ]
+            },
+            {
+                "dan": 4,
+                "dvorana": "D2",
+                "grupa": "G4",
+                "kolegij": "Kolegij7",
+                "profesor": "Ime3 Prezime3",
+                "termin": [
+                    10,
+                    11,
+                    12
+                ]
+            },
+            {
+                "dan": 2,
+                "dvorana": "D2",
+                "grupa": "G6",
+                "kolegij": "Kolegij6",
+                "profesor": "Ime5 Prezime5",
+                "termin": [
+                    11
+                ]
+            },
+            {
+                "dan": 2,
+                "dvorana": "D3",
+                "grupa": "G4",
+                "kolegij": "Kolegij4",
+                "profesor": "Ime4 Prezime4",
+                "termin": [
+                    8,
+                    9,
+                    7
+                ]
+            },
+            {
+                "dan": 3,
+                "dvorana": "D4",
+                "grupa": "G2",
+                "kolegij": "Kolegij3",
+                "profesor": "Ime3 Prezime3",
+                "termin": [
+                    10,
+                    11
+                ]
+            },
+            {
+                "dan": 1,
+                "dvorana": "D1",
+                "grupa": "G2",
+                "kolegij": "Kolegij2",
+                "profesor": "Ime2 Prezime2",
+                "termin": [
+                    4
+                ]
+            },
+            {
+                "dan": 4,
+                "dvorana": "D3",
+                "grupa": "G3",
+                "kolegij": "Kolegij1",
+                "profesor": "Ime1 Prezime1",
+                "termin": [
+                    4,
+                    5
+                ]
+            },
+            {
+                "dan": 4,
+                "dvorana": "D1",
+                "grupa": "G5",
+                "kolegij": "Kolegij4",
+                "profesor": "Ime7 Prezime7",
+                "termin": [
+                    5
+                ]
+            },
+            {
+                "dan": 5,
+                "dvorana": "D4",
+                "grupa": "G7",
+                "kolegij": "Kolegij3",
+                "profesor": "Ime4 Prezime4",
+                "termin": [
+                    4,
+                    5,
+                    6
+                ]
+            },
+            {
+                "dan": 5,
+                "dvorana": "D2",
+                "grupa": "G5",
+                "kolegij": "Kolegij3",
+                "profesor": "Ime7 Prezime7",
+                "termin": [
+                    4
+                ]
+            }
+        ],
+        "soft_dev": 16,
+        "soft_pos": [
+            [
+                "k-d",
+                0
+            ],
+            [
+                "k-d",
+                0
+            ],
+            [
+                "k-t",
+                0
+            ],
+            [
+                "p-t",
+                0
+            ],
+            [
+                "k-t",
+                3
+            ],
+            [
+                "k-d",
+                3
+            ],
+            [
+                "k-t",
+                3
+            ],
+            [
+                "k-d",
+                7
+            ],
+            [
+                "k-d",
+                10
+            ],
+            [
+                "k-d",
+                10
+            ],
+            [
+                "k-t",
+                10
+            ],
+            [
+                "k-d",
+                11
+            ],
+            [
+                "d",
+                3
+            ],
+            [
+                "d",
+                8
+            ],
+            [
+                "g",
+                9,
+                3
+            ],
+            [
+                "g",
+                13,
+                2
+            ]
+        ],
+        "validnost": true
+    },
+    {
+        "fit": 579.501089325051,
+        "hard_dev": 0,
+        "hard_pos": [],
+        "jedinka": [
+            {
+                "dan": 4,
+                "dvorana": "D1",
+                "grupa": "G1",
+                "kolegij": "Kolegij1",
+                "profesor": "Ime1 Prezime1",
+                "termin": [
+                    9,
+                    10
+                ]
+            },
+            {
+                "dan": 2,
+                "dvorana": "D1",
+                "grupa": "G2",
+                "kolegij": "Kolegij2",
+                "profesor": "Ime1 Prezime1",
+                "termin": [
+                    8,
+                    9,
+                    7
+                ]
+            },
+            {
+                "dan": 5,
+                "dvorana": "D3",
+                "grupa": "G3",
+                "kolegij": "Kolegij5",
+                "profesor": "Ime2 Prezime2",
+                "termin": [
+                    8,
+                    9
+                ]
+            },
+            {
+                "dan": 1,
+                "dvorana": "D4",
+                "grupa": "G2",
+                "kolegij": "Kolegij1",
+                "profesor": "Ime3 Prezime3",
+                "termin": [
+                    9,
+                    10,
+                    11
+                ]
+            },
+            {
+                "dan": 4,
+                "dvorana": "D2",
+                "grupa": "G5",
+                "kolegij": "Kolegij2",
+                "profesor": "Ime5 Prezime5",
+                "termin": [
+                    8,
+                    7
+                ]
+            },
+            {
+                "dan": 4,
+                "dvorana": "D2",
+                "grupa": "G4",
+                "kolegij": "Kolegij7",
+                "profesor": "Ime3 Prezime3",
+                "termin": [
+                    10,
+                    11,
+                    12
+                ]
+            },
+            {
+                "dan": 2,
+                "dvorana": "D2",
+                "grupa": "G6",
+                "kolegij": "Kolegij6",
+                "profesor": "Ime5 Prezime5",
+                "termin": [
+                    11
+                ]
+            },
+            {
+                "dan": 2,
+                "dvorana": "D3",
+                "grupa": "G4",
+                "kolegij": "Kolegij4",
+                "profesor": "Ime4 Prezime4",
+                "termin": [
+                    8,
+                    9,
+                    7
+                ]
+            },
+            {
+                "dan": 3,
+                "dvorana": "D4",
+                "grupa": "G2",
+                "kolegij": "Kolegij3",
+                "profesor": "Ime3 Prezime3",
+                "termin": [
+                    10,
+                    11
+                ]
+            },
+            {
+                "dan": 1,
+                "dvorana": "D1",
+                "grupa": "G2",
+                "kolegij": "Kolegij2",
+                "profesor": "Ime2 Prezime2",
+                "termin": [
+                    4
+                ]
+            },
+            {
+                "dan": 4,
+                "dvorana": "D3",
+                "grupa": "G3",
+                "kolegij": "Kolegij1",
+                "profesor": "Ime1 Prezime1",
+                "termin": [
+                    4,
+                    5
+                ]
+            },
+            {
+                "dan": 4,
+                "dvorana": "D1",
+                "grupa": "G5",
+                "kolegij": "Kolegij4",
+                "profesor": "Ime7 Prezime7",
+                "termin": [
+                    5
+                ]
+            },
+            {
+                "dan": 5,
+                "dvorana": "D4",
+                "grupa": "G7",
+                "kolegij": "Kolegij3",
+                "profesor": "Ime4 Prezime4",
+                "termin": [
+                    4,
+                    5,
+                    6
+                ]
+            },
+            {
+                "dan": 5,
+                "dvorana": "D2",
+                "grupa": "G5",
+                "kolegij": "Kolegij3",
+                "profesor": "Ime7 Prezime7",
+                "termin": [
+                    4
+                ]
+            }
+        ],
+        "soft_dev": 16,
+        "soft_pos": [
+            [
+                "k-d",
+                0
+            ],
+            [
+                "k-d",
+                0
+            ],
+            [
+                "k-t",
+                0
+            ],
+            [
+                "p-t",
+                0
+            ],
+            [
+                "k-t",
+                3
+            ],
+            [
+                "k-d",
+                3
+            ],
+            [
+                "k-t",
+                3
+            ],
+            [
+                "k-d",
+                7
+            ],
+            [
+                "k-d",
+                10
+            ],
+            [
+                "k-d",
+                10
+            ],
+            [
+                "k-t",
+                10
+            ],
+            [
+                "k-d",
+                11
+            ],
+            [
+                "d",
+                3
+            ],
+            [
+                "d",
+                8
+            ],
+            [
+                "g",
+                9,
+                3
+            ],
+            [
+                "g",
+                13,
+                2
+            ]
+        ],
+        "validnost": true
+    },
+    {
+        "fit": 579.501089325051,
+        "hard_dev": 0,
+        "hard_pos": [],
+        "jedinka": [
+            {
+                "dan": 4,
+                "dvorana": "D1",
+                "grupa": "G1",
+                "kolegij": "Kolegij1",
+                "profesor": "Ime1 Prezime1",
+                "termin": [
+                    9,
+                    10
+                ]
+            },
+            {
+                "dan": 2,
+                "dvorana": "D1",
+                "grupa": "G2",
+                "kolegij": "Kolegij2",
+                "profesor": "Ime1 Prezime1",
+                "termin": [
+                    8,
+                    9,
+                    7
+                ]
+            },
+            {
+                "dan": 5,
+                "dvorana": "D3",
+                "grupa": "G3",
+                "kolegij": "Kolegij5",
+                "profesor": "Ime2 Prezime2",
+                "termin": [
+                    8,
+                    9
+                ]
+            },
+            {
+                "dan": 1,
+                "dvorana": "D4",
+                "grupa": "G2",
+                "kolegij": "Kolegij1",
+                "profesor": "Ime3 Prezime3",
+                "termin": [
+                    9,
+                    10,
+                    11
+                ]
+            },
+            {
+                "dan": 4,
+                "dvorana": "D2",
+                "grupa": "G5",
+                "kolegij": "Kolegij2",
+                "profesor": "Ime5 Prezime5",
+                "termin": [
+                    8,
+                    7
+                ]
+            },
+            {
+                "dan": 4,
+                "dvorana": "D3",
+                "grupa": "G4",
+                "kolegij": "Kolegij7",
+                "profesor": "Ime3 Prezime3",
+                "termin": [
+                    1,
+                    2,
+                    3
+                ]
+            },
+            {
+                "dan": 2,
+                "dvorana": "D2",
+                "grupa": "G6",
+                "kolegij": "Kolegij6",
+                "profesor": "Ime5 Prezime5",
+                "termin": [
+                    11
+                ]
+            },
+            {
+                "dan": 2,
+                "dvorana": "D3",
+                "grupa": "G4",
+                "kolegij": "Kolegij4",
+                "profesor": "Ime4 Prezime4",
+                "termin": [
+                    8,
+                    9,
+                    7
+                ]
+            },
+            {
+                "dan": 3,
+                "dvorana": "D4",
+                "grupa": "G2",
+                "kolegij": "Kolegij3",
+                "profesor": "Ime3 Prezime3",
+                "termin": [
+                    10,
+                    11
+                ]
+            },
+            {
+                "dan": 1,
+                "dvorana": "D1",
+                "grupa": "G2",
+                "kolegij": "Kolegij2",
+                "profesor": "Ime2 Prezime2",
+                "termin": [
+                    4
+                ]
+            },
+            {
+                "dan": 4,
+                "dvorana": "D3",
+                "grupa": "G3",
+                "kolegij": "Kolegij1",
+                "profesor": "Ime1 Prezime1",
+                "termin": [
+                    4,
+                    5
+                ]
+            },
+            {
+                "dan": 4,
+                "dvorana": "D1",
+                "grupa": "G5",
+                "kolegij": "Kolegij4",
+                "profesor": "Ime7 Prezime7",
+                "termin": [
+                    5
+                ]
+            },
+            {
+                "dan": 5,
+                "dvorana": "D4",
+                "grupa": "G7",
+                "kolegij": "Kolegij3",
+                "profesor": "Ime4 Prezime4",
+                "termin": [
+                    4,
+                    5,
+                    6
+                ]
+            },
+            {
+                "dan": 5,
+                "dvorana": "D2",
+                "grupa": "G5",
+                "kolegij": "Kolegij3",
+                "profesor": "Ime7 Prezime7",
+                "termin": [
+                    4
+                ]
+            }
+        ],
+        "soft_dev": 16,
+        "soft_pos": [
+            [
+                "k-d",
+                0
+            ],
+            [
+                "k-d",
+                0
+            ],
+            [
+                "k-t",
+                0
+            ],
+            [
+                "p-t",
+                0
+            ],
+            [
+                "k-t",
+                3
+            ],
+            [
+                "k-d",
+                3
+            ],
+            [
+                "k-t",
+                3
+            ],
+            [
+                "k-d",
+                7
+            ],
+            [
+                "k-d",
+                10
+            ],
+            [
+                "k-d",
+                10
+            ],
+            [
+                "k-t",
+                10
+            ],
+            [
+                "k-d",
+                11
+            ],
+            [
+                "d",
+                3
+            ],
+            [
+                "d",
+                8
+            ],
+            [
+                "g",
+                9,
+                3
+            ],
+            [
+                "g",
+                13,
+                2
+            ]
+        ],
+        "validnost": true
+    },
+    {
+        "fit": 579.501089325051,
+        "hard_dev": 0,
+        "hard_pos": [],
+        "jedinka": [
+            {
+                "dan": 4,
+                "dvorana": "D1",
+                "grupa": "G1",
+                "kolegij": "Kolegij1",
+                "profesor": "Ime1 Prezime1",
+                "termin": [
+                    9,
+                    10
+                ]
+            },
+            {
+                "dan": 2,
+                "dvorana": "D1",
+                "grupa": "G2",
+                "kolegij": "Kolegij2",
+                "profesor": "Ime1 Prezime1",
+                "termin": [
+                    8,
+                    9,
+                    7
+                ]
+            },
+            {
+                "dan": 5,
+                "dvorana": "D3",
+                "grupa": "G3",
+                "kolegij": "Kolegij5",
+                "profesor": "Ime2 Prezime2",
+                "termin": [
+                    8,
+                    9
+                ]
+            },
+            {
+                "dan": 1,
+                "dvorana": "D4",
+                "grupa": "G2",
+                "kolegij": "Kolegij1",
+                "profesor": "Ime3 Prezime3",
+                "termin": [
+                    9,
+                    10,
+                    11
+                ]
+            },
+            {
+                "dan": 4,
+                "dvorana": "D2",
+                "grupa": "G5",
+                "kolegij": "Kolegij2",
+                "profesor": "Ime5 Prezime5",
+                "termin": [
+                    8,
+                    7
+                ]
+            },
+            {
+                "dan": 4,
+                "dvorana": "D3",
+                "grupa": "G4",
+                "kolegij": "Kolegij7",
+                "profesor": "Ime3 Prezime3",
+                "termin": [
+                    1,
+                    2,
+                    3
+                ]
+            },
+            {
+                "dan": 2,
+                "dvorana": "D2",
+                "grupa": "G6",
+                "kolegij": "Kolegij6",
+                "profesor": "Ime5 Prezime5",
+                "termin": [
+                    11
+                ]
+            },
+            {
+                "dan": 2,
+                "dvorana": "D3",
+                "grupa": "G4",
+                "kolegij": "Kolegij4",
+                "profesor": "Ime4 Prezime4",
+                "termin": [
+                    8,
+                    9,
+                    7
+                ]
+            },
+            {
+                "dan": 3,
+                "dvorana": "D4",
+                "grupa": "G2",
+                "kolegij": "Kolegij3",
+                "profesor": "Ime3 Prezime3",
+                "termin": [
+                    10,
+                    11
+                ]
+            },
+            {
+                "dan": 1,
+                "dvorana": "D1",
+                "grupa": "G2",
+                "kolegij": "Kolegij2",
+                "profesor": "Ime2 Prezime2",
+                "termin": [
+                    4
+                ]
+            },
+            {
+                "dan": 4,
+                "dvorana": "D3",
+                "grupa": "G3",
+                "kolegij": "Kolegij1",
+                "profesor": "Ime1 Prezime1",
+                "termin": [
+                    4,
+                    5
+                ]
+            },
+            {
+                "dan": 4,
+                "dvorana": "D1",
+                "grupa": "G5",
+                "kolegij": "Kolegij4",
+                "profesor": "Ime7 Prezime7",
+                "termin": [
+                    5
+                ]
+            },
+            {
+                "dan": 5,
+                "dvorana": "D4",
+                "grupa": "G7",
+                "kolegij": "Kolegij3",
+                "profesor": "Ime4 Prezime4",
+                "termin": [
+                    4,
+                    5,
+                    6
+                ]
+            },
+            {
+                "dan": 5,
+                "dvorana": "D2",
+                "grupa": "G5",
+                "kolegij": "Kolegij3",
+                "profesor": "Ime7 Prezime7",
+                "termin": [
+                    4
+                ]
+            }
+        ],
+        "soft_dev": 16,
+        "soft_pos": [
+            [
+                "k-d",
+                0
+            ],
+            [
+                "k-d",
+                0
+            ],
+            [
+                "k-t",
+                0
+            ],
+            [
+                "p-t",
+                0
+            ],
+            [
+                "k-t",
+                3
+            ],
+            [
+                "k-d",
+                3
+            ],
+            [
+                "k-t",
+                3
+            ],
+            [
+                "k-d",
+                7
+            ],
+            [
+                "k-d",
+                10
+            ],
+            [
+                "k-d",
+                10
+            ],
+            [
+                "k-t",
+                10
+            ],
+            [
+                "k-d",
+                11
+            ],
+            [
+                "d",
+                3
+            ],
+            [
+                "d",
+                8
+            ],
+            [
+                "g",
+                9,
+                3
+            ],
+            [
+                "g",
+                13,
+                2
+            ]
+        ],
+        "validnost": true
+    },
+    {
+        "fit": 579.501089325051,
+        "hard_dev": 0,
+        "hard_pos": [],
+        "jedinka": [
+            {
+                "dan": 4,
+                "dvorana": "D1",
+                "grupa": "G1",
+                "kolegij": "Kolegij1",
+                "profesor": "Ime1 Prezime1",
+                "termin": [
+                    9,
+                    10
+                ]
+            },
+            {
+                "dan": 2,
+                "dvorana": "D1",
+                "grupa": "G2",
+                "kolegij": "Kolegij2",
+                "profesor": "Ime1 Prezime1",
+                "termin": [
+                    8,
+                    9,
+                    7
+                ]
+            },
+            {
+                "dan": 5,
+                "dvorana": "D3",
+                "grupa": "G3",
+                "kolegij": "Kolegij5",
+                "profesor": "Ime2 Prezime2",
+                "termin": [
+                    8,
+                    9
+                ]
+            },
+            {
+                "dan": 1,
+                "dvorana": "D4",
+                "grupa": "G2",
+                "kolegij": "Kolegij1",
+                "profesor": "Ime3 Prezime3",
+                "termin": [
+                    9,
+                    10,
+                    11
+                ]
+            },
+            {
+                "dan": 4,
+                "dvorana": "D2",
+                "grupa": "G5",
+                "kolegij": "Kolegij2",
+                "profesor": "Ime5 Prezime5",
+                "termin": [
+                    8,
+                    7
+                ]
+            },
+            {
+                "dan": 4,
+                "dvorana": "D3",
+                "grupa": "G4",
+                "kolegij": "Kolegij7",
+                "profesor": "Ime3 Prezime3",
+                "termin": [
+                    1,
+                    2,
+                    3
+                ]
+            },
+            {
+                "dan": 2,
+                "dvorana": "D2",
+                "grupa": "G6",
+                "kolegij": "Kolegij6",
+                "profesor": "Ime5 Prezime5",
+                "termin": [
+                    11
+                ]
+            },
+            {
+                "dan": 2,
+                "dvorana": "D3",
+                "grupa": "G4",
+                "kolegij": "Kolegij4",
+                "profesor": "Ime4 Prezime4",
+                "termin": [
+                    8,
+                    9,
+                    7
+                ]
+            },
+            {
+                "dan": 3,
+                "dvorana": "D4",
+                "grupa": "G2",
+                "kolegij": "Kolegij3",
+                "profesor": "Ime3 Prezime3",
+                "termin": [
+                    10,
+                    11
+                ]
+            },
+            {
+                "dan": 1,
+                "dvorana": "D1",
+                "grupa": "G2",
+                "kolegij": "Kolegij2",
+                "profesor": "Ime2 Prezime2",
+                "termin": [
+                    4
+                ]
+            },
+            {
+                "dan": 4,
+                "dvorana": "D3",
+                "grupa": "G3",
+                "kolegij": "Kolegij1",
+                "profesor": "Ime1 Prezime1",
+                "termin": [
+                    4,
+                    5
+                ]
+            },
+            {
+                "dan": 4,
+                "dvorana": "D1",
+                "grupa": "G5",
+                "kolegij": "Kolegij4",
+                "profesor": "Ime7 Prezime7",
+                "termin": [
+                    5
+                ]
+            },
+            {
+                "dan": 5,
+                "dvorana": "D4",
+                "grupa": "G7",
+                "kolegij": "Kolegij3",
+                "profesor": "Ime4 Prezime4",
+                "termin": [
+                    4,
+                    5,
+                    6
+                ]
+            },
+            {
+                "dan": 5,
+                "dvorana": "D2",
+                "grupa": "G5",
+                "kolegij": "Kolegij3",
+                "profesor": "Ime7 Prezime7",
+                "termin": [
+                    4
+                ]
+            }
+        ],
+        "soft_dev": 16,
+        "soft_pos": [
+            [
+                "k-d",
+                0
+            ],
+            [
+                "k-d",
+                0
+            ],
+            [
+                "k-t",
+                0
+            ],
+            [
+                "p-t",
+                0
+            ],
+            [
+                "k-t",
+                3
+            ],
+            [
+                "k-d",
+                3
+            ],
+            [
+                "k-t",
+                3
+            ],
+            [
+                "k-d",
+                7
+            ],
+            [
+                "k-d",
+                10
+            ],
+            [
+                "k-d",
+                10
+            ],
+            [
+                "k-t",
+                10
+            ],
+            [
+                "k-d",
+                11
+            ],
+            [
+                "d",
+                3
+            ],
+            [
+                "d",
+                8
+            ],
+            [
+                "g",
+                9,
+                3
+            ],
+            [
+                "g",
+                13,
+                2
+            ]
+        ],
+        "validnost": true
+    }
+]

@@ -1,0 +1,364 @@
+<div class="container">
+
+    <button type="button" class="btn btn-light" (click)="showProfesoriClick()">Profesori</button>
+    <button type="button" class="btn btn-light" (click)="showDvoraneClick()">Dvorane</button>
+    <button type="button" class="btn btn-light" (click)="showKolegijiClick()">Kolegiji</button>
+    <button type="button" class="btn btn-light" (click)="showGrupeClick()">Grupe</button>
+    <button type="button" class="btn btn-light" (click)="showDaniTermClick()">Parametri</button>
+
+    <button type="button" class="btn btn-light" (click)="showNastavaClick()">Nastava</button>
+    <button type="button" class="btn btn-light" (click)="showPrefProfClick()">Preferencije profesori</button>
+    <button type="button" class="btn btn-light" (click)="showPrefKolegClick()">Preferencije kolegiji</button>
+    <br><br>
+
+    <div *ngIf="showProfesori">
+        <div class="card" style="width: 40rem;">
+            <div class="card-body">
+                <h5 class="card-title">Profesori</h5>
+                <form [formGroup]="formdata" (ngSubmit)="onClickSubmit(formdata.value)">
+                    <div class="form-group">
+                        <label for="imeprez">Ime i prezime</label>
+                        <input type="text" id="imeprez" name="imeprez" placeholder="Ime i prezime"
+                            formControlName="imeprez" class="form-control">
+                    </div>
+
+                    <input type="submit" value="Dodaj" class="btn btn-primary">
+
+                </form>
+            </div>
+        </div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Ime i prezime</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let prof of profesori; let i = index">
+                    <td>{{i}}</td>
+                    <td>{{prof}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <div *ngIf="showDvorane">
+        <div class="card" style="width: 40rem;">
+            <div class="card-body">
+                <h5 class="card-title">Dvorane</h5>
+                <form [formGroup]="dvoraneData" (ngSubmit)="onClickSubmitDvorane(dvoraneData.value)">
+                    <div class="form-group">
+                        <label for="nazivDvorane">Naziv</label>
+                        <input type="text" name="nazivDvorane" placeholder="Naziv" formControlName="nazivDvorane"
+                            class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="kapacitetDvorane">Kapacitet</label>
+                        <input type="number" name="kapacitetDvorane" placeholder="Kapacitet" class="form-control"
+                            formControlName="kapacitetDvorane">
+                    </div>
+
+
+                    <select class="custom-select" formControlName="specDvorane" name="specDvorane" size="3" multiple>
+                        <option value="P">Predavanje</option>
+                        <option value="S">Seminar</option>
+                        <option value="L">Labos</option>
+                    </select>
+
+                    <input type="submit" value="Dodaj" class="btn btn-primary">
+                </form>
+            </div>
+
+
+        </div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Naziv</th>
+                    <th scope="col">Kapacitet</th>
+                    <th scope="col">Tipovi nastave</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let d of dvorane; let i = index">
+                    <td>{{i}}</td>
+                    <td>{{d.naziv}}</td>
+                    <td>{{d.kapacitet}}</td>
+                    <td>{{d.spec}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <div *ngIf="showKolegiji">
+        <div class="card" style="width: 40rem;">
+            <div class="card-body">
+                <h5 class="card-title">Kolegiji</h5>
+                <form [formGroup]="kolegijiData" (ngSubmit)="onClickSubmitKolegiji(kolegijiData.value)">
+
+                    <div class="form-group">
+                        <label for="nazivKolegija">Naziv</label>
+                        <input type="text" name="nazivKolegija" id="nazivKolegija" placeholder="naziv"
+                            formControlName="nazivKolegija" class="form-control">
+                    </div>
+
+                    <input type="submit" value="Dodaj" class="btn btn-primary">
+
+                </form>
+            </div>
+        </div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Naziv kolegija</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let k of kolegiji; let i = index">
+                    <td>{{i}}</td>
+                    <td>{{k}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <div *ngIf="showGrupe">
+        <div class="card" style="width: 40rem;">
+            <div class="card-body">
+                <h5 class="card-title">Grupe</h5>
+                <form [formGroup]="grupeData" (ngSubmit)="onClickSubmitGrupe(grupeData.value)">
+
+                    <div class="form-group">
+                        <label for="nazivGrupe">Naziv</label>
+                        <input type="text" name="nazivGrupe" id="nazivGrupe" placeholder="Naziv"
+                            formControlName="nazivGrupe" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nazivKolegija">Kapacitet</label>
+                        <input type="number" id="kapacitetGrupe" name="kapacitetGrupe" placeholder="Kapacitet"
+                            class="form-control" formControlName="kapacitetGrupe">
+                    </div>
+
+                    <input type="submit" value="Dodaj" class="btn btn-primary">
+                </form>
+            </div>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Naziv grupe</th>
+                        <th scope="col">Kapacitet</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let g of grupe; let i = index">
+                        <td>{{i}}</td>
+                        <td>{{g.naziv}}</td>
+                        <td>{{g.kapacitet}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+    <div *ngIf="showDani">
+        <div class="card" style="width: 40rem;">
+            <div class="card-body">
+                <h5 class="card-title">Dani i termini</h5>
+                <form [formGroup]="vrijemeData" (ngSubmit)="onClickSubmitVrijeme(vrijemeData.value)">
+
+                    <div class="form-group">
+                        <label for="daniRas">Dani</label>
+                        <input type="number" name="daniRas" id="daniRas" placeholder="Broj dana"
+                            formControlName="daniRas" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="terminiRas">Termini</label>
+                        <input type="number" name="terminiRas" id="terminiRas" placeholder="Broj termina"
+                            formControlName="terminiRas" class="form-control">
+                    </div>
+
+                    <input type="submit" value="Dodaj" class="btn btn-primary">
+                    <ul>
+                        <li *ngFor="let g of grupe; let i = index">
+                            {{i}} {{g.naziv}}
+                        </li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="showNastava">
+        <div class="card" style="width: 40rem;">
+            <div class="card-body">
+                <h5 class="card-title">Nastava</h5>
+                <form [formGroup]="nastavaData" (ngSubmit)="onNastavaSubmit(nastavaData.value)">
+                    <div class="form-group">
+                        <label for="profId">Profesor</label>
+                        <select class="form-control" formControlName="profId" name="profId" id="profId">
+                            <option *ngFor="let prof of profesori; let idProf = index" value="{{idProf}}">{{prof}}
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="kolegijId">Kolegij</label>
+                        <select class="form-control" formControlName="kolegijId" name="kolegijId" id="kolegijId">
+                            <option *ngFor="let kolegij of kolegiji; let idKol = index" value="{{idKol}}">
+                                {{kolegij}}
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="grupaId">Grupa</label>
+                        <select class="form-control" formControlName="grupaId" name="grupaId" id="grupaId">
+                            <option *ngFor="let grupa of grupe; let idG = index" value="{{idG}}">
+                                {{grupa.naziv}}
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="trajanjeNastave">Trajanje</label>
+                        <input type="number" name="trajanjeNastave" id="trajanjeNastave" placeholder="Broj dana"
+                            formControlName="trajanjeNastave" class="form-control">
+                    </div>
+                    <label for="tipNastave">Tip nastave</label>
+                    <select class="custom-select" formControlName="tipNastave" name="tipNastave" id="tipNastave"
+                        size="3" multiple>
+                        <option value="P">Predavanje</option>
+                        <option value="S">Seminar</option>
+                        <option value="L">Labos</option>
+                    </select>
+                    <input type="submit" value="Dodaj" class="btn btn-primary">
+                </form>
+            </div>
+
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Profesor</th>
+                    <th scope="col">Kolegij</th>
+                    <th scope="col">Grupa</th>
+                    <th scope="col">Trajanje</th>
+                    <th scope="col">Tip nastave</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let n of nastava; let i = index">
+                    <td>{{profesori[n.p_id]}}</td>
+                    <td>{{kolegiji[n.k_id]}}</td>
+                    <td>{{grupe[n.g_id].naziv}}</td>
+                    <td>{{n.trajanje}}</td>
+                    <td>{{n.dvorana}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="showPrefProf">
+        <div class="card" style="width: 40rem;">
+            <div class="card-body">
+                <h5 class="card-title">Preferencije profesora</h5>
+                <form [formGroup]="prefProfData" (ngSubmit)="onPrefProfDataSubmit(prefProfData.value)">
+                    <div class="form-group">
+                        <label for="profId">Profesor</label>
+                        <select class="form-control" formControlName="profId" name="profId" id="profId">
+                            <option *ngFor="let prof of profesori; let idProf = index" value="{{idProf}}">{{prof}}
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="dan">Dan</label>
+                        <select class="form-control" formControlName="dan" name="dan" id="dan">
+                            <option value="1">Ponedjeljak</option>
+                            <option value="2">Utorak</option>
+                            <option value="3">Srijeda</option>
+                            <option value="4">Četvrtak</option>
+                            <option value="5">Petak</option>
+                            <option value="6">Subota</option>
+                            <option value="7">Nedjelja</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nazivGrupe">Preferirani termini</label>
+                        <input type="time" name="prefTermini" id="prefTermini" placeholder="termini"
+                            formControlName="prefTermini" class="form-control">
+                        <button type="button">Dodaj termin</button>
+                    </div>
+                    <script>
+                    </script>
+
+
+                    <input type="submit" value="Dodaj" class="btn btn-primary">
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <div *ngIf="showPrefKoleg">
+        <div class="card" style="width: 40rem;">
+            <div class="card-body">
+                <h5 class="card-title">Preferencije kolegij</h5>
+                <form [formGroup]="prefKolegData" (ngSubmit)="onPreferencijeKolegijuSubmit(prefKolegData.value)">
+                    <div class="form-group">
+                        <label for="kolegijIdp">Kolegij</label>
+                        <select class="form-control" formControlName="kolegijIdp" name="kolegijIdp" id="kolegijIdp">
+                            <option *ngFor="let kol of kolegiji; let kidp = index" value="{{kidp}}">{{kol}}
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="dvoranaIdp">Dvorane</label>
+                        <select class="form-control" formControlName="dvoranaIdp" name="dvoranaIdp" id="dvoranaIdp"
+                            multiple>
+                            <option *ngFor="let d of dvorane; let idD = index" value="{{idD}}">
+                                {{d.naziv}}
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="prefTerminiKoleg">Preferirani termini</label>
+                        <input type="text" name="prefTerminiKoleg" id="prefTerminiKoleg" placeholder="termini"
+                            formControlName="prefTerminiKoleg" class="form-control">
+                        <small id="prefTerminiHelp" class="form-text text-muted">
+                            terminod-termindo odojeno zarezom npr. 1-7,1-3
+                        </small>
+                    </div>
+
+                    <input type="submit" value="Dodaj" class="btn btn-primary">
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+</div>
