@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputRasporedComponent } from './input-raspored/input-raspored.component';
 
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -28,7 +28,8 @@ import { InputRasporedComponent } from './input-raspored/input-raspored.componen
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory
-    })
+    }),
+    NgbModule
   ],
 
   exports: [WeekComponent],

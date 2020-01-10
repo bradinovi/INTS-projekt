@@ -298,15 +298,28 @@
                         </select>
                     </div>
 
-                    <div class="form-group">
-                        <label for="nazivGrupe">Preferirani termini</label>
-                        <input type="time" name="prefTermini" id="prefTermini" placeholder="termini"
-                            formControlName="prefTermini" class="form-control">
-                        <button type="button">Dodaj termin</button>
-                    </div>
-                    <script>
-                    </script>
 
+                    <div class="row">
+                        <div class="col-sm">
+                            <label for="nazivGrupe">Od:</label>
+                            <ngb-timepicker formControlName="prefTerminiOd" id="prefTerminiOd"> </ngb-timepicker>
+                            <label for="nazivGrupe">Do:</label>
+                            <ngb-timepicker formControlName="prefTerminiDo" id="prefTerminiDo"> </ngb-timepicker>
+
+                        </div>
+                        <div class="col-sm">
+                            <button type="button" class="btn btn-secondary" style="margin-top: 80pt;"
+                                (click)="dodajTerminPrefProf()">Dodaj
+                                termin</button>
+                        </div>
+                        <div class="col-sm" *ngIf="checkPrefProfExist()">
+                            <h4
+                                *ngFor="let t of preferencijeProf[prefProfData.value.profId][this.prefProfData.value.dan]; let ti = index">
+                                <span class="badge badge-info"
+                                    (click)="removePrefProf(ti)">{{t.od.hour + ":" + t.od.minute}} -
+                                    {{t.do.hour + ":" + t.do.minute}}</span></h4>
+                        </div>
+                    </div>
 
                     <input type="submit" value="Dodaj" class="btn btn-primary">
                 </form>
@@ -330,21 +343,34 @@
 
                     <div class="form-group">
                         <label for="dvoranaIdp">Dvorane</label>
-                        <select class="form-control" formControlName="dvoranaIdp" name="dvoranaIdp" id="dvoranaIdp"
-                            multiple>
-                            <option *ngFor="let d of dvorane; let idD = index" value="{{idD}}">
-                                {{d.naziv}}
+
+
+                        <select class="form-control" formControlName="dvoranaIdp" name="dvoranaIdp" id="dvoranaIdp">
+                            <option *ngFor="let d of dvorane; let idD = index" value="{{idD}}"> {{d.naziv}}
                             </option>
                         </select>
+
                     </div>
 
-                    <div class="form-group">
-                        <label for="prefTerminiKoleg">Preferirani termini</label>
-                        <input type="text" name="prefTerminiKoleg" id="prefTerminiKoleg" placeholder="termini"
-                            formControlName="prefTerminiKoleg" class="form-control">
-                        <small id="prefTerminiHelp" class="form-text text-muted">
-                            terminod-termindo odojeno zarezom npr. 1-7,1-3
-                        </small>
+                    <div class="row">
+                        <div class="col-sm">
+                            <label for="prefTerminiOd">Od:</label>
+                            <ngb-timepicker formControlName="prefTerminiOd" id="prefTerminiOd"> </ngb-timepicker>
+                            <label for="prefTerminiDo">Do:</label>
+                            <ngb-timepicker formControlName="prefTerminiDo" id="prefTerminiDo"> </ngb-timepicker>
+                        </div>
+                        <div class="col-sm">
+                            <button type="button" class="btn btn-secondary" style="margin-top: 80pt;"
+                                (click)="dodajTerminPrefKoleg()">Dodaj
+                                termin</button>
+                        </div>
+                        <div class="col-sm" *ngIf="checkPrefKolegExist()">
+                            <h4
+                                *ngFor="let t of preferencijeKoleg[prefKolegData.value.kolegijIdp][prefKolegData.value.dvoranaIdp]; let ki = index">
+                                <span class="badge badge-info"
+                                    (click)="removePrefProf(ki)">{{t.od.hour + ":" + t.od.minute}} -
+                                    {{t.do.hour + ":" + t.do.minute}}</span></h4>
+                        </div>
                     </div>
 
                     <input type="submit" value="Dodaj" class="btn btn-primary">

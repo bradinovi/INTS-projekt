@@ -33,12 +33,27 @@ export class InputRasporedComponent implements OnInit {
   dani = [];
   termini = [];
   nastava = [];
-  preferencije = {
-    profesori: [],
-    kolegiji: []
-  }
+  preferencijeProf = {};
+
+  time = { hour: 13, minute: 30 };
+
   constructor() {
     this.profesori.push("Borna Radinović")
+
+    this.kolegiji.push("Mreže računala 1")
+    this.kolegiji.push("Uzorci dizajna")
+    this.dvorane.push({
+      "id": 1,
+      "naziv": "D1",
+      "kapacitet": 50,
+      "spec": ["P", "S"]
+    })
+    this.dvorane.push({
+      "id": 2,
+      "naziv": "D2",
+      "kapacitet": 50,
+      "spec": ["P", "S"]
+    })
   }
 
   ngOnInit() {
@@ -73,13 +88,15 @@ export class InputRasporedComponent implements OnInit {
     this.prefProfData = new FormGroup({
       profId: new FormControl(),
       dan: new FormControl(),
-      prefTermini: new FormControl(),
+      prefTerminiOd: new FormControl(),
+      prefTerminiDo: new FormControl(),
     });
 
     this.prefKolegData = new FormGroup({
       kolegijIdp: new FormControl(),
       dvoranaIdp: new FormControl(),
-      prefTerminiKoleg: new FormControl()
+      prefTerminiOd: new FormControl(),
+      prefTerminiDo: new FormControl()
     });
   }
 
@@ -140,17 +157,7 @@ export class InputRasporedComponent implements OnInit {
     let pid = data.profId;
     let oldData = { dan: 0, termini: [] };
 
-    this.preferencije.profesori.forEach(el => {
-      if (el.p_id == pid) {
-        oldData = el.odabir
-        el.odabir.forEach(o => {
-          if (o.dan == data.dan) {
-            // o.termini.push(newDataArr);
-            return true;
-          }
-        })
-      };
-    });
+
     var pref = {
       p_id: data.profId,
       odabir: []
@@ -158,13 +165,47 @@ export class InputRasporedComponent implements OnInit {
 
     pref.odabir.push({ dan: data.dan, termini: concat(oldData.termini, newDataArr) });
 
-    this.preferencije.profesori.push(pref);
-    console.log(this.preferencije.profesori);
+  }
+
+  dodajTerminPrefProf() {
+    let val = this.prefProfData.value;
+    //console.log(val);
+    if (val.profId == null) return;
+    if (typeof this.preferencijeProf[val.profId] === "undefined") {
+      this.preferencijeProf[val.profId] = {};
+      this.preferencijeProf[val.profId][val.dan] = [];
+    } else if (typeof this.preferencijeProf[val.profId][val.dan] === "undefined") {
+      this.preferencijeProf[val.profId][val.dan] = [];
+    }
+    this.preferencijeProf[val.profId][val.dan].push({ od: val.prefTerminiOd, do: val.prefTerminiDo });
+    console.log(this.preferencijeProf);
+  }
+
+  checkPrefProfExist() {
+    let val = this.prefProfData.value;
+    if (this.prefProfData.value.profId == null || this.prefProfData.value.dan == null) return false;
+    if (typeof this.preferencijeProf[val.profId] === "undefined") {
+      return false;
+    } else if (typeof this.preferencijeProf[val.profId][val.dan] === "undefined") {
+      return false;
+    }
+    return true;
+  }
+
+  removePrefProf(index) {
+    console.log("remove pref prof")
+    let val = this.prefProfData.value;
+    this.preferencijeProf[val.profId][val.dan].splice(index, 1);
   }
 
   onPreferencijeKolegijuSubmit(data) {
     console.log(data)
   }
+
+  checkPrefKolegExist() {
+    return false;
+  }
+
 
   showProfesoriClick() {
     this.showProfesori = true;
