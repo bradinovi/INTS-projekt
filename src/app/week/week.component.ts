@@ -10,10 +10,11 @@ import {
 import { min } from 'date-fns'
 
 import { CalendarView, CalendarEvent } from 'angular-calendar';
-import { Subject } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { addDays, addHours, startOfDay } from 'date-fns';
+import { ApiServiceService } from '../api-service.service';
 const colors: any = {
   red: {
     primary: '#ad2121',
@@ -39,7 +40,7 @@ const colors: any = {
 export class WeekComponent implements OnInit {
   startOfDay: number = 6;
   sviRasporedi = [];
-
+  private generiraniRaspored: Subscription;
   public data: {
     fit: number,
     hard_dev: number,
@@ -60,10 +61,12 @@ export class WeekComponent implements OnInit {
   private destroy$ = new Subject();
 
   constructor(
-    private cd: ChangeDetectorRef
+    private cd: ChangeDetectorRef,
+    public apiService: ApiServiceService
   ) {
     console.log(this.viewDate)
     console.log(addHours(this.viewDate, 2))
+
   }
 
 
@@ -83,6 +86,13 @@ export class WeekComponent implements OnInit {
         daysInWeek: 5
       }
     };
+
+    this.generiraniRaspored = this.apiService.getgeneriraniRasporedListener().subscribe(
+      (data) => {
+        this.data = data;
+        this.dodajEvente();
+      }
+    );
 
   }
 
@@ -135,36 +145,40 @@ export class WeekComponent implements OnInit {
     myReader.onloadend = e => {
       this.data = JSON.parse(<string>myReader.result);
       console.log(this.data)
-      this.data.forEach(mog => {
-        let raspored = [];
-        mog.jedinka.forEach(er => {
-          let startEvent = addDays(this.viewDate, er.dan - 1);
-          let endEvent = startEvent;
-          startEvent = addHours(startEvent, Math.min(...er.termin) - 1)
-          endEvent = addHours(endEvent, Math.max(...er.termin));
-          var string = "Termini: "
-          er.termin.forEach(t => string = string + t + ",")
-          var prikazTestini = 'TEST <br>' + string + "<br>" + er.grupa
-          var prikaz = er.kolegij + "<br>" +
-            er.dvorana + "<br>" + er.grupa + "<br>" + er.profesor
-          var event = {
-            start: startEvent,
-            end: endEvent,
-            title: prikaz,
-            color: colors.yellow
-          }
-          raspored.push(event);
-          this.events = [
-            ...this.events,
-            event
-          ];
-
-        });
-        this.sviRasporedi.push(raspored);
-      });
+      this.dodajEvente();
       console.log(this.sviRasporedi);
 
     }
     myReader.readAsText(file);
+  }
+
+  dodajEvente() {
+    this.data.forEach(mog => {
+      let raspored = [];
+      mog.jedinka.forEach(er => {
+        let startEvent = addDays(this.viewDate, er.dan - 1);
+        let endEvent = startEvent;
+        startEvent = addHours(startEvent, Math.min(...er.termin) - 1)
+        endEvent = addHours(endEvent, Math.max(...er.termin));
+        var string = "Termini: "
+        er.termin.forEach(t => string = string + t + ",")
+        var prikazTestini = 'TEST <br>' + string + "<br>" + er.grupa
+        var prikaz = er.kolegij + "<br>" +
+          er.dvorana + "<br>" + er.grupa + "<br>" + er.profesor
+        var event = {
+          start: startEvent,
+          end: endEvent,
+          title: prikaz,
+          color: colors.yellow
+        }
+        raspored.push(event);
+        this.events = [
+          ...this.events,
+          event
+        ];
+
+      });
+      this.sviRasporedi.push(raspored);
+    });
   }
 }

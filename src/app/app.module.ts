@@ -5,13 +5,13 @@ import { AppComponent } from './app.component';
 import { WeekComponent } from './week/week.component';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 
-import * as moment from 'moment';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { InputRasporedComponent } from './input-raspored/input-raspored.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -24,6 +24,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   imports: [
     BrowserModule,
     CommonModule,
+    HttpClientModule,
     ReactiveFormsModule,
     CalendarModule.forRoot({
       provide: DateAdapter,
@@ -31,7 +32,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     }),
     NgbModule
   ],
-
   exports: [WeekComponent],
   providers: [],
   bootstrap: [AppComponent]

@@ -9,6 +9,8 @@
     <button type="button" class="btn btn-light" (click)="showNastavaClick()">Nastava</button>
     <button type="button" class="btn btn-light" (click)="showPrefProfClick()">Preferencije profesori</button>
     <button type="button" class="btn btn-light" (click)="showPrefKolegClick()">Preferencije kolegiji</button>
+
+    <button type="button" class="btn btn-success" (click)="generiraj()">Generiraj</button>
     <br><br>
 
     <div *ngIf="showProfesori">
@@ -174,7 +176,84 @@
     </div>
 
     <div *ngIf="showDani">
-        <div class="card" style="width: 40rem;">
+        <div class="card" style="width: 40rem; margin-bottom: 3pt;">
+
+            <div class="card" style="width: 40rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Parametri algoritma</h5>
+                    <form [formGroup]="algoritamData" (ngSubmit)="onClickSubmitAlgoritamData(algoritamData.value)">
+
+                        <div class="form-group">
+                            <label for="max_gen">Broj generacija</label>
+                            <input type="text" name="max_gen" id="max_gen" placeholder="max_gen"
+                                formControlName="max_gen" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="n_pop">Veličina populacije</label>
+                            <input type="text" name="n_pop" id="n_pop" placeholder="n_pop" formControlName="n_pop"
+                                class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="mut_a">Parametar mutiranja (a)</label>
+                            <input type="text" name="mut_a" id="mut_a" placeholder="mut_a" formControlName="mut_a"
+                                class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="mut_b">Parametar mutiranja (b)</label>
+                            <input type="text" name="mut_b" id="mut_b" placeholder="mut_b" formControlName="mut_b"
+                                class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="p_cross">Vjerojatnost mutiranja</label>
+                            <input type="text" name="" id="p_cross" placeholder="p_cross" formControlName="p_cross"
+                                class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="tournament_size">Tournament size</label>
+                            <input type="text" name="tournament_size" id="tournament_size" placeholder="tournament_size"
+                                formControlName="tournament_size" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="n_best">Broj najboljih jedinki</label>
+                            <input type="text" name="n_best" id="n_best" placeholder="n_best" formControlName="n_best"
+                                class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="n_best">Popunjenost dvorane</label>
+                            <input type="text" name="popunjenostDvorane" id="popunjenostDvorane"
+                                placeholder="popunjenostDvorane" formControlName="popunjenostDvorane"
+                                class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="n_best">Max razmak grupa</label>
+                            <input type="text" name="max_razmak_grupe" id="max_razmak_grupe"
+                                placeholder="max_razmak_grupe" formControlName="max_razmak_grupe" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="n_best">Dnevni limit</label>
+                            <input type="text" name="dnevni_limit" id="dnevni_limit" placeholder="dnevni_limit"
+                                formControlName="dnevni_limit" class="form-control">
+                        </div>
+
+                        <input type="submit" value="Dodaj" class="btn btn-primary">
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="showNastava">
+        <div class="card" style="width: 40rem; margin-bottom: 3pt;">
             <div class="card-body">
                 <h5 class="card-title">Dani i termini</h5>
                 <form [formGroup]="vrijemeData" (ngSubmit)="onClickSubmitVrijeme(vrijemeData.value)">
@@ -192,18 +271,12 @@
                     </div>
 
                     <input type="submit" value="Dodaj" class="btn btn-primary">
-                    <ul>
-                        <li *ngFor="let g of grupe; let i = index">
-                            {{i}} {{g.naziv}}
-                        </li>
-                    </ul>
+
                 </form>
             </div>
         </div>
-    </div>
-
-    <div *ngIf="showNastava">
         <div class="card" style="width: 40rem;">
+
             <div class="card-body">
                 <h5 class="card-title">Nastava</h5>
                 <form [formGroup]="nastavaData" (ngSubmit)="onNastavaSubmit(nastavaData.value)">
@@ -298,30 +371,25 @@
                         </select>
                     </div>
 
-
-                    <div class="row">
-                        <div class="col-sm">
-                            <label for="nazivGrupe">Od:</label>
-                            <ngb-timepicker formControlName="prefTerminiOd" id="prefTerminiOd"> </ngb-timepicker>
-                            <label for="nazivGrupe">Do:</label>
-                            <ngb-timepicker formControlName="prefTerminiDo" id="prefTerminiDo"> </ngb-timepicker>
-
-                        </div>
-                        <div class="col-sm">
-                            <button type="button" class="btn btn-secondary" style="margin-top: 80pt;"
-                                (click)="dodajTerminPrefProf()">Dodaj
-                                termin</button>
-                        </div>
-                        <div class="col-sm" *ngIf="checkPrefProfExist()">
-                            <h4
-                                *ngFor="let t of preferencijeProf[prefProfData.value.profId][this.prefProfData.value.dan]; let ti = index">
-                                <span class="badge badge-info"
-                                    (click)="removePrefProf(ti)">{{t.od.hour + ":" + t.od.minute}} -
-                                    {{t.do.hour + ":" + t.do.minute}}</span></h4>
-                        </div>
+                    <div class="form-group">
+                        <label for="terminiPrefProf">Termini</label>
+                        <input type="text" name="terminiPrefProf" id="terminiPrefProf" placeholder="terminiPrefProf"
+                            formControlName="terminiPrefProf" class="form-control">
                     </div>
 
-                    <input type="submit" value="Dodaj" class="btn btn-primary">
+                    <button type="button" class="btn btn-secondary" style="margin-top: 80pt;"
+                        (click)="dodajTerminPrefProf()">Dodaj
+                        termine</button>
+
+
+                    <div *ngIf="checkPrefProfExist()">
+                        <h4 style="display: inline; margin: 1pt;"
+                            *ngFor="let t of preferencijeProf[prefProfData.value.profId][this.prefProfData.value.dan]; let ti = index">
+                            <span class="badge badge-info" (click)="removePrefProf(ti)">{{t}}</span></h4>
+                    </div>
+
+
+
                 </form>
             </div>
 
@@ -332,7 +400,7 @@
         <div class="card" style="width: 40rem;">
             <div class="card-body">
                 <h5 class="card-title">Preferencije kolegij</h5>
-                <form [formGroup]="prefKolegData" (ngSubmit)="onPreferencijeKolegijuSubmit(prefKolegData.value)">
+                <form [formGroup]="prefKolegData">
                     <div class="form-group">
                         <label for="kolegijIdp">Kolegij</label>
                         <select class="form-control" formControlName="kolegijIdp" name="kolegijIdp" id="kolegijIdp">
@@ -343,37 +411,36 @@
 
                     <div class="form-group">
                         <label for="dvoranaIdp">Dvorane</label>
-
-
-                        <select class="form-control" formControlName="dvoranaIdp" name="dvoranaIdp" id="dvoranaIdp">
+                        <select class="form-control" formControlName="dvoranaIdp" name="dvoranaIdp" id="dvoranaIdp"
+                            multiple>
                             <option *ngFor="let d of dvorane; let idD = index" value="{{idD}}"> {{d.naziv}}
                             </option>
                         </select>
-
                     </div>
 
-                    <div class="row">
-                        <div class="col-sm">
-                            <label for="prefTerminiOd">Od:</label>
-                            <ngb-timepicker formControlName="prefTerminiOd" id="prefTerminiOd"> </ngb-timepicker>
-                            <label for="prefTerminiDo">Do:</label>
-                            <ngb-timepicker formControlName="prefTerminiDo" id="prefTerminiDo"> </ngb-timepicker>
-                        </div>
-                        <div class="col-sm">
-                            <button type="button" class="btn btn-secondary" style="margin-top: 80pt;"
-                                (click)="dodajTerminPrefKoleg()">Dodaj
-                                termin</button>
-                        </div>
-                        <div class="col-sm" *ngIf="checkPrefKolegExist()">
-                            <h4
-                                *ngFor="let t of preferencijeKoleg[prefKolegData.value.kolegijIdp][prefKolegData.value.dvoranaIdp]; let ki = index">
+                    <div class="form-group">
+                        <label for="terminiPrefKoleg">Termini</label>
+                        <input type="text" name="terminiPrefKoleg" id="terminiPrefKoleg" placeholder="terminiPrefKoleg"
+                            formControlName="terminiPrefKoleg" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <button type="button" class="btn btn-secondary" (click)="dodajTerminPrefKoleg()">Dodaj
+                            termine</button>
+                    </div>
+
+
+
+                    <div *ngIf="checkPrefKolegExist()">
+
+
+                        <div *ngFor="let t of preferencijeKoleg[prefKolegData.value.kolegijIdp]; let ti = index">
+                            <h4 style="display: inline; margin: 1pt;">
                                 <span class="badge badge-info"
-                                    (click)="removePrefProf(ki)">{{t.od.hour + ":" + t.od.minute}} -
-                                    {{t.do.hour + ":" + t.do.minute}}</span></h4>
+                                    (click)="removePrefKoleg(ti)">{{tekstRepPrefKoleg(t)}}</span></h4>
+
                         </div>
                     </div>
 
-                    <input type="submit" value="Dodaj" class="btn btn-primary">
                 </form>
             </div>
 
