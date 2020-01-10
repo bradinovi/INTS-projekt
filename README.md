@@ -3,6 +3,7 @@
 ## Instalirat
 
 Node.js : `https://nodejs.org/en/`
+U korjenskom folderu `npm install `
 
 ## Development server
 
