@@ -1,7 +1,17 @@
-<h1>Raspored</h1>
+<div class="d-flex justify-content-center mb-3 mt-3">
+    <h1>Generator rasporeda</h1>
+</div>
 
-<button (click)="showInputPanel()">Input</button>
-<button (click)="showOutputPanel()">Output</button>
+<div class="d-flex justify-content-center mb-3">
+    <div class="">
+        <button (click)="showInputPanel()" class="btn btn-primary mr-3">Unos podataka</button>
+    </div>
+    <div class="">
+        <button (click)="showOutputPanel()" class="btn btn-primary">Prikaz rasporeda</button>
+    </div>
+</div>
+
+
 
 <app-week *ngIf="showOutput"></app-week>
 <app-input-raspored *ngIf="showInput"></app-input-raspored>

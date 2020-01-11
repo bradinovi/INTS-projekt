@@ -1,18 +1,25 @@
+<div class="d-flex justify-content-center input-menu">
+    <div class="mr-2"><button type="button" class="btn btn-light" (click)="showProfesoriClick()">Profesori</button>
+    </div>
+    <div class="mr-2"> <button type="button" class="btn btn-light" (click)="showDvoraneClick()">Dvorane</button></div>
+    <div class="mr-2"> <button type="button" class="btn btn-light" (click)="showKolegijiClick()">Kolegiji</button></div>
+    <div class="mr-2">
+        <button type="button" class="btn btn-light" (click)="showGrupeClick()">Grupe</button>
+    </div>
+    <div class="mr-2"> <button type="button" class="btn btn-light" (click)="showDaniTermClick()">Parametri</button>
+    </div>
+    <div class="mr-2"> <button type="button" class="btn btn-light" (click)="showNastavaClick()">Nastava</button></div>
+    <div class="mr-2"> <button type="button" class="btn btn-light" (click)="showPrefProfClick()">Preferencije
+            profesori</button></div>
+    <div class="mr-2"> <button type="button" class="btn btn-light" (click)="showPrefKolegClick()">Preferencije
+            kolegiji</button></div>
+    <div class="mr-2">
+        <button type="button" class="btn btn-success" (click)="generiraj()">Generiraj</button>
+    </div>
+</div>
+
 <div class="container">
-
-    <button type="button" class="btn btn-light" (click)="showProfesoriClick()">Profesori</button>
-    <button type="button" class="btn btn-light" (click)="showDvoraneClick()">Dvorane</button>
-    <button type="button" class="btn btn-light" (click)="showKolegijiClick()">Kolegiji</button>
-    <button type="button" class="btn btn-light" (click)="showGrupeClick()">Grupe</button>
-    <button type="button" class="btn btn-light" (click)="showDaniTermClick()">Parametri</button>
-
-    <button type="button" class="btn btn-light" (click)="showNastavaClick()">Nastava</button>
-    <button type="button" class="btn btn-light" (click)="showPrefProfClick()">Preferencije profesori</button>
-    <button type="button" class="btn btn-light" (click)="showPrefKolegClick()">Preferencije kolegiji</button>
-
-    <button type="button" class="btn btn-success" (click)="generiraj()">Generiraj</button>
     <br><br>
-
     <div *ngIf="showProfesori">
         <div class="card" style="width: 40rem;">
             <div class="card-body">
@@ -35,12 +42,14 @@
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Ime i prezime</th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let prof of profesori; let i = index">
                     <td>{{i}}</td>
                     <td>{{prof}}</td>
+                    <td> <button type="button" class="btn btn-danger" (click)="obrisiProf(i)">Obriši</button></td>
                 </tr>
             </tbody>
         </table>
@@ -84,6 +93,7 @@
                     <th scope="col">Naziv</th>
                     <th scope="col">Kapacitet</th>
                     <th scope="col">Tipovi nastave</th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
@@ -92,6 +102,7 @@
                     <td>{{d.naziv}}</td>
                     <td>{{d.kapacitet}}</td>
                     <td>{{d.spec}}</td>
+                    <td> <button type="button" class="btn btn-danger" (click)="obrisiDvorana(i)">Obriši</button></td>
                 </tr>
             </tbody>
         </table>
@@ -127,6 +138,7 @@
                 <tr *ngFor="let k of kolegiji; let i = index">
                     <td>{{i}}</td>
                     <td>{{k}}</td>
+                    <td> <button type="button" class="btn btn-danger" (click)="obrisiKolegij(i)">Obriši</button></td>
                 </tr>
             </tbody>
         </table>
@@ -154,127 +166,144 @@
                     <input type="submit" value="Dodaj" class="btn btn-primary">
                 </form>
             </div>
-
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Naziv grupe</th>
-                        <th scope="col">Kapacitet</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let g of grupe; let i = index">
-                        <td>{{i}}</td>
-                        <td>{{g.naziv}}</td>
-                        <td>{{g.kapacitet}}</td>
-                    </tr>
-                </tbody>
-            </table>
-
         </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Naziv grupe</th>
+                    <th scope="col">Kapacitet</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let g of grupe; let i = index">
+                    <td>{{i}}</td>
+                    <td>{{g.naziv}}</td>
+                    <td>{{g.kapacitet}}</td>
+                    <td> <button type="button" class="btn btn-danger" (click)="obrisiGrupu(i)">Obriši</button></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
     <div *ngIf="showDani">
-        <div class="card" style="width: 40rem; margin-bottom: 3pt;">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="card">
+                        <div class=" card-body">
+                            <h5 class="card-title">Dani i termini</h5>
+                            <form [formGroup]="vrijemeData" (ngSubmit)="onClickSubmitVrijeme(vrijemeData.value)">
 
-            <div class="card" style="width: 40rem;">
-                <div class="card-body">
-                    <h5 class="card-title">Parametri algoritma</h5>
-                    <form [formGroup]="algoritamData" (ngSubmit)="onClickSubmitAlgoritamData(algoritamData.value)">
+                                <div class="form-group">
+                                    <label for="daniRas">Dani</label>
+                                    <input type="number" name="daniRas" id="daniRas" placeholder="Broj dana"
+                                        formControlName="daniRas" class="form-control">
+                                </div>
 
-                        <div class="form-group">
-                            <label for="max_gen">Broj generacija</label>
-                            <input type="text" name="max_gen" id="max_gen" placeholder="max_gen"
-                                formControlName="max_gen" class="form-control">
+                                <div class="form-group">
+                                    <label for="terminiRas">Termini</label>
+                                    <input type="number" name="terminiRas" id="terminiRas" placeholder="Broj termina"
+                                        formControlName="terminiRas" class="form-control">
+                                </div>
+
+                                <input type="submit" value="Dodaj" class="btn btn-primary">
+
+                            </form>
                         </div>
+                    </div>
+                    <div class="termini-dani">
+                        Broj dana: {{dani.length}} <br>
+                        Broj termina: {{dani.length}}
+                    </div>
 
-                        <div class="form-group">
-                            <label for="n_pop">Veličina populacije</label>
-                            <input type="text" name="n_pop" id="n_pop" placeholder="n_pop" formControlName="n_pop"
-                                class="form-control">
+                </div>
+                <div class="col-sm">
+                    <div class="card" style="width: 40rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Parametri algoritma</h5>
+                            <form [formGroup]="algoritamData"
+                                (ngSubmit)="onClickSubmitAlgoritamData(algoritamData.value)">
+
+                                <div class="form-group">
+                                    <label for="max_gen">Broj generacija</label>
+                                    <input type="text" name="max_gen" id="max_gen" placeholder="max_gen"
+                                        formControlName="max_gen" class="form-control">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="n_pop">Veličina populacije</label>
+                                    <input type="text" name="n_pop" id="n_pop" placeholder="n_pop"
+                                        formControlName="n_pop" class="form-control">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="mut_a">Parametar mutiranja (a)</label>
+                                    <input type="text" name="mut_a" id="mut_a" placeholder="mut_a"
+                                        formControlName="mut_a" class="form-control">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="mut_b">Parametar mutiranja (b)</label>
+                                    <input type="text" name="mut_b" id="mut_b" placeholder="mut_b"
+                                        formControlName="mut_b" class="form-control">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="p_cross">Vjerojatnost mutiranja</label>
+                                    <input type="text" name="" id="p_cross" placeholder="p_cross"
+                                        formControlName="p_cross" class="form-control">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="tournament_size">Tournament size</label>
+                                    <input type="text" name="tournament_size" id="tournament_size"
+                                        placeholder="tournament_size" formControlName="tournament_size"
+                                        class="form-control">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="n_best">Broj najboljih jedinki</label>
+                                    <input type="text" name="n_best" id="n_best" placeholder="n_best"
+                                        formControlName="n_best" class="form-control">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="n_best">Popunjenost dvorane</label>
+                                    <input type="text" name="popunjenostDvorane" id="popunjenostDvorane"
+                                        placeholder="popunjenostDvorane" formControlName="popunjenostDvorane"
+                                        class="form-control">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="n_best">Max razmak grupa</label>
+                                    <input type="text" name="max_razmak_grupe" id="max_razmak_grupe"
+                                        placeholder="max_razmak_grupe" formControlName="max_razmak_grupe"
+                                        class="form-control">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="n_best">Dnevni limit</label>
+                                    <input type="text" name="dnevni_limit" id="dnevni_limit" placeholder="dnevni_limit"
+                                        formControlName="dnevni_limit" class="form-control">
+                                </div>
+                                <input type="submit" value="Dodaj" class="btn btn-primary">
+                            </form>
                         </div>
-
-                        <div class="form-group">
-                            <label for="mut_a">Parametar mutiranja (a)</label>
-                            <input type="text" name="mut_a" id="mut_a" placeholder="mut_a" formControlName="mut_a"
-                                class="form-control">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="mut_b">Parametar mutiranja (b)</label>
-                            <input type="text" name="mut_b" id="mut_b" placeholder="mut_b" formControlName="mut_b"
-                                class="form-control">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="p_cross">Vjerojatnost mutiranja</label>
-                            <input type="text" name="" id="p_cross" placeholder="p_cross" formControlName="p_cross"
-                                class="form-control">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="tournament_size">Tournament size</label>
-                            <input type="text" name="tournament_size" id="tournament_size" placeholder="tournament_size"
-                                formControlName="tournament_size" class="form-control">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="n_best">Broj najboljih jedinki</label>
-                            <input type="text" name="n_best" id="n_best" placeholder="n_best" formControlName="n_best"
-                                class="form-control">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="n_best">Popunjenost dvorane</label>
-                            <input type="text" name="popunjenostDvorane" id="popunjenostDvorane"
-                                placeholder="popunjenostDvorane" formControlName="popunjenostDvorane"
-                                class="form-control">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="n_best">Max razmak grupa</label>
-                            <input type="text" name="max_razmak_grupe" id="max_razmak_grupe"
-                                placeholder="max_razmak_grupe" formControlName="max_razmak_grupe" class="form-control">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="n_best">Dnevni limit</label>
-                            <input type="text" name="dnevni_limit" id="dnevni_limit" placeholder="dnevni_limit"
-                                formControlName="dnevni_limit" class="form-control">
-                        </div>
-
-                        <input type="submit" value="Dodaj" class="btn btn-primary">
-
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
+
+
+
+
+
     </div>
 
     <div *ngIf="showNastava">
-        <div class="card" style="width: 40rem; margin-bottom: 3pt;">
-            <div class="card-body">
-                <h5 class="card-title">Dani i termini</h5>
-                <form [formGroup]="vrijemeData" (ngSubmit)="onClickSubmitVrijeme(vrijemeData.value)">
 
-                    <div class="form-group">
-                        <label for="daniRas">Dani</label>
-                        <input type="number" name="daniRas" id="daniRas" placeholder="Broj dana"
-                            formControlName="daniRas" class="form-control">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="terminiRas">Termini</label>
-                        <input type="number" name="terminiRas" id="terminiRas" placeholder="Broj termina"
-                            formControlName="terminiRas" class="form-control">
-                    </div>
-
-                    <input type="submit" value="Dodaj" class="btn btn-primary">
-
-                </form>
-            </div>
-        </div>
         <div class="card" style="width: 40rem;">
 
             <div class="card-body">
@@ -308,7 +337,7 @@
 
                     <div class="form-group">
                         <label for="trajanjeNastave">Trajanje</label>
-                        <input type="number" name="trajanjeNastave" id="trajanjeNastave" placeholder="Broj dana"
+                        <input type="number" name="trajanjeNastave" id="trajanjeNastave" placeholder="trajanje nastave"
                             formControlName="trajanjeNastave" class="form-control">
                     </div>
                     <label for="tipNastave">Tip nastave</label>
@@ -331,6 +360,7 @@
                     <th scope="col">Grupa</th>
                     <th scope="col">Trajanje</th>
                     <th scope="col">Tip nastave</th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
@@ -340,6 +370,8 @@
                     <td>{{grupe[n.g_id].naziv}}</td>
                     <td>{{n.trajanje}}</td>
                     <td>{{n.dvorana}}</td>
+                    <td> <button type="button" class="btn btn-danger" (click)="obrisiNastava(i)">Obriši</button>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -382,7 +414,7 @@
                         termine</button>
 
 
-                    <div *ngIf="checkPrefProfExist()">
+                    <div *ngIf="checkPrefProfExist()" class="mt-3">
                         <h4 style="display: inline; margin: 1pt;"
                             *ngFor="let t of preferencijeProf[prefProfData.value.profId][this.prefProfData.value.dan]; let ti = index">
                             <span class="badge badge-info" (click)="removePrefProf(ti)">{{t}}</span></h4>

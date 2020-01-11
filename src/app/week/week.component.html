@@ -1,13 +1,28 @@
-<div>
-    <input class="box__file" type="file" #filepicker multiple (change)="fileInputChange($event)" />
+<div class="container">
+    <div>
+        <input class="box__file" type="file" #filepicker multiple (change)="fileInputChange($event)" />
+    </div>
+    <br>
+
+    <br>
+
+    <div class="d-flex justify-content-center input-menu">
+        <div>
+            <button (click)="onPrev()" class="btn btn-light mr-1">Prev</button>
+            <button (click)="onNext()" class="btn btn-light">Next</button>
+        </div>
+    </div>
+    <div class="d-flex justify-content-center input-menu">
+        <div class="pages-style">
+            {{postition + 1}} / {{sviRasporedi.length}}
+        </div>
+    </div>
+
+
+    <br>
+
+
+    <mwl-calendar-week-view [viewDate]="viewDate" [daysInWeek]="daysInWeek" [events]="events"
+        [dayStartHour]="startOfDay">
+    </mwl-calendar-week-view>
 </div>
-<br>
-<button (click)="onPrev()">Prev</button>
-<button (click)="onNext()">Next</button>
-<br>
-{{postition + 1}} / {{sviRasporedi.length}}
-<br>
-
-
-<mwl-calendar-week-view [viewDate]="viewDate" [daysInWeek]="daysInWeek" [events]="events" [dayStartHour]="startOfDay">
-</mwl-calendar-week-view>

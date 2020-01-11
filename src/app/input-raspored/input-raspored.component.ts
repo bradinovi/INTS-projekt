@@ -389,6 +389,26 @@ export class InputRasporedComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() { }
 
+  obrisiProf(index) {
+    this.profesori.splice(index, 1);
+  }
+
+  obrisiDvorana(index) {
+    this.dvorane.splice(index, 1);
+  }
+
+  obrisiKolegij(index) {
+    this.kolegiji.splice(index, 1);
+  }
+
+  obrisiGrupu(index) {
+    this.grupe.splice(index, 1);
+  }
+
+  obrisiNastava(index) {
+    this.nastava.splice(index, 1);
+  }
+
   showProfesoriClick() {
     this.showProfesori = true;
     this.showDvorane = false;
