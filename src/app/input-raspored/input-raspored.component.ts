@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { concat } from 'rxjs';
 import { validateEvents } from 'angular-calendar/modules/common/util';
@@ -9,7 +9,7 @@ import { ApiServiceService } from '../api-service.service';
   templateUrl: './input-raspored.component.html',
   styleUrls: ['./input-raspored.component.css']
 })
-export class InputRasporedComponent implements OnInit {
+export class InputRasporedComponent implements OnInit, OnDestroy {
   showProfesori: boolean = false;
   showDvorane: boolean = false;
   showKolegiji: boolean = false;
@@ -19,15 +19,15 @@ export class InputRasporedComponent implements OnInit {
   showPrefProf: boolean = false;
   showPrefKoleg: boolean = false;
 
-  formdata;
-  dvoraneData;
-  kolegijiData;
-  grupeData;
-  vrijemeData;
-  nastavaData;
-  prefProfData;
-  prefKolegData;
-  algoritamData;
+  formdata: FormGroup;
+  dvoraneData: FormGroup;
+  kolegijiData: FormGroup;
+  grupeData: FormGroup;
+  vrijemeData: FormGroup;
+  nastavaData: FormGroup;
+  prefProfData: FormGroup;
+  prefKolegData: FormGroup;
+  algoritamData: FormGroup;
 
   profesori = [];
   dvorane = [];
@@ -63,6 +63,7 @@ export class InputRasporedComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.vratiPodatke();
     this.formdata = new FormGroup({
       imeprez: new FormControl()
 
@@ -105,18 +106,8 @@ export class InputRasporedComponent implements OnInit {
       prefTerminiDo: new FormControl()
     });
 
-    this.algoritamData = new FormGroup({
-      max_gen: new FormControl(),
-      n_pop: new FormControl(),
-      mut_a: new FormControl(),
-      mut_b: new FormControl(),
-      p_cross: new FormControl(),
-      tournament_size: new FormControl(),
-      n_best: new FormControl(),
-      popunjenostDvorane: new FormControl(),
-      max_razmak_grupe: new FormControl(),
-      dnevni_limit: new FormControl()
-    });
+
+
   }
 
   generiraj() {
@@ -323,6 +314,81 @@ export class InputRasporedComponent implements OnInit {
 
   }
 
+
+  tekstRepPrefKoleg(kolegijData) {
+    //console.log(kolegijData);
+    let string = "";
+    kolegijData.dvorane.forEach(e => {
+      string = string + " " + this.dvorane[e].naziv;
+    });
+    string = string + " = "
+    kolegijData.termini.forEach(e => {
+      string = string + " " + e;
+    });
+    return string
+  }
+
+  @HostListener("window:beforeunload", ["$event"]) unloadHandler(event: Event) {
+    sessionStorage.setItem("profesori", JSON.stringify(this.profesori))
+    sessionStorage.setItem("dvorane", JSON.stringify(this.dvorane))
+    sessionStorage.setItem("kolegiji", JSON.stringify(this.kolegiji))
+    sessionStorage.setItem("grupe", JSON.stringify(this.grupe))
+    sessionStorage.setItem("dani", JSON.stringify(this.dani))
+    sessionStorage.setItem("termini", JSON.stringify(this.termini))
+    sessionStorage.setItem("nastava", JSON.stringify(this.nastava))
+    sessionStorage.setItem("preferencijeProf", JSON.stringify(this.preferencijeProf))
+    sessionStorage.setItem("preferencijeKoleg", JSON.stringify(this.preferencijeKoleg))
+    sessionStorage.setItem("algoritamData", JSON.stringify(this.algoritamData.value))
+  }
+
+  vratiPodatke() {
+    var profesoriData = JSON.parse(sessionStorage.getItem("profesori"));
+    this.profesori = profesoriData ? profesoriData : [];
+
+    var dvoraneData = JSON.parse(sessionStorage.getItem("dvorane"));
+    this.dvorane = dvoraneData ? dvoraneData : [];
+
+    var kolegijiData = JSON.parse(sessionStorage.getItem("kolegiji"));
+    this.kolegiji = kolegijiData ? kolegijiData : [];
+
+    var grupeData = JSON.parse(sessionStorage.getItem("grupe"));
+    this.grupe = grupeData ? grupeData : [];
+
+    var daniData = JSON.parse(sessionStorage.getItem("dani"));
+    this.dani = daniData ? daniData : [];
+
+    var terminiData = JSON.parse(sessionStorage.getItem("termini"));
+    this.termini = terminiData ? terminiData : [];
+
+    var nastavaData = JSON.parse(sessionStorage.getItem("nastava"));
+    this.nastava = nastavaData ? nastavaData : [];
+
+    var preferencijeProfData = JSON.parse(sessionStorage.getItem("preferencijeProf"));
+    this.preferencijeProf = preferencijeProfData ? preferencijeProfData : {};
+
+    var preferencijeKolegData = JSON.parse(sessionStorage.getItem("preferencijeKoleg"));
+    this.preferencijeKoleg = preferencijeKolegData ? preferencijeKolegData : {};
+
+    var algoritamDataData = JSON.parse(sessionStorage.getItem("algoritamData"));
+    this.algoritamData = new FormGroup({
+      max_gen: new FormControl(),
+      n_pop: new FormControl(),
+      mut_a: new FormControl(),
+      mut_b: new FormControl(),
+      p_cross: new FormControl(),
+      tournament_size: new FormControl(),
+      n_best: new FormControl(),
+      popunjenostDvorane: new FormControl(),
+      max_razmak_grupe: new FormControl(),
+      dnevni_limit: new FormControl()
+    });
+    if (algoritamDataData != null) {
+      this.algoritamData.setValue(algoritamDataData);
+    }
+  }
+
+  ngOnDestroy() { }
+
   showProfesoriClick() {
     this.showProfesori = true;
     this.showDvorane = false;
@@ -410,16 +476,5 @@ export class InputRasporedComponent implements OnInit {
     this.showPrefProf = false;
     this.showPrefKoleg = true;
   }
-  tekstRepPrefKoleg(kolegijData) {
-    //console.log(kolegijData);
-    let string = "";
-    kolegijData.dvorane.forEach(e => {
-      string = string + " " + this.dvorane[e].naziv;
-    });
-    string = string + " = "
-    kolegijData.termini.forEach(e => {
-      string = string + " " + e;
-    });
-    return string
-  }
+
 }

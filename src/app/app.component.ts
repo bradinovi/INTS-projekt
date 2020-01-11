@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
     this.conversionInProgressSub = this.apiService.getfileConversionDoneListener().subscribe(
       (conversionDone) => {
         if (conversionDone) {
+          console.log("PROMJENI EKRAN")
           this.showInput = false;
           this.showOutput = true;
         }

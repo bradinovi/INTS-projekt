@@ -9,230 +9,79 @@
     "dvorane": [
         {
             "id": 0,
-            "kapacitet": 50,
+            "kapacitet": 3,
             "naziv": "D1",
             "spec": [
                 "P",
                 "S"
-            ]
-        },
-        {
-            "id": 1,
-            "kapacitet": 70,
-            "naziv": "D2",
-            "spec": [
-                "P",
-                "S"
-            ]
-        },
-        {
-            "id": 2,
-            "kapacitet": 100,
-            "naziv": "D3",
-            "spec": [
-                "P"
-            ]
-        },
-        {
-            "id": 3,
-            "kapacitet": 100,
-            "naziv": "D4",
-            "spec": [
-                "L"
             ]
         }
     ],
     "grupe": [
         {
             "id": 0,
-            "kapacitet": 30,
+            "kapacitet": 3,
             "naziv": "G1"
         },
         {
             "id": 1,
-            "kapacitet": 30,
-            "naziv": "G2"
-        },
-        {
-            "id": 2,
-            "kapacitet": 70,
-            "naziv": "G3"
-        },
-        {
-            "id": 3,
-            "kapacitet": 45,
-            "naziv": "G4"
-        },
-        {
-            "id": 4,
-            "kapacitet": 30,
-            "naziv": "G5"
-        },
-        {
-            "id": 5,
-            "kapacitet": 50,
-            "naziv": "G6"
-        },
-        {
-            "id": 6,
-            "kapacitet": 70,
-            "naziv": "G7"
+            "kapacitet": 5,
+            "naziv": "G1"
         }
     ],
     "kolegiji": [
         {
             "id": 0,
-            "naziv": "Kolegij1"
-        },
-        {
-            "id": 1,
-            "naziv": "Kolegij2"
-        },
-        {
-            "id": 2,
-            "naziv": "Kolegij3"
-        },
-        {
-            "id": 3,
-            "naziv": "Kolegij4"
-        },
-        {
-            "id": 4,
-            "naziv": "Kolegij5"
-        },
-        {
-            "id": 5,
-            "naziv": "Kolegij6"
-        },
-        {
-            "id": 6,
-            "naziv": "Kolegij7"
+            "naziv": "ERP"
         }
     ],
     "nastava": [
         {
             "dvorana": [
                 "P",
-                "L"
+                "S"
             ],
-            "g_id": "0",
-            "k_id": "0",
-            "p_id": "0",
-            "trajanje": 2
-        },
-        {
-            "dvorana": [
-                "P",
-                "L"
-            ],
-            "g_id": "1",
-            "k_id": "1",
-            "p_id": "0",
-            "trajanje": 3
-        },
-        {
-            "dvorana": [
-                "P"
-            ],
-            "g_id": "2",
-            "k_id": "4",
-            "p_id": "1",
-            "trajanje": 2
+            "g_id": 0,
+            "k_id": 0,
+            "p_id": 0,
+            "trajanje": 4
         },
         {
             "dvorana": [
                 "P",
                 "S"
             ],
-            "g_id": "1",
-            "k_id": "0",
-            "p_id": "2",
-            "trajanje": 3
-        },
-        {
-            "dvorana": [
-                "P",
-                "S"
-            ],
-            "g_id": "4",
-            "k_id": "1",
-            "p_id": "4",
-            "trajanje": 2
-        },
-        {
-            "dvorana": [
-                "P"
-            ],
-            "g_id": "3",
-            "k_id": "6",
-            "p_id": "2",
-            "trajanje": 3
-        },
-        {
-            "dvorana": [
-                "P",
-                "S"
-            ],
-            "g_id": "5",
-            "k_id": "5",
-            "p_id": "4",
-            "trajanje": 1
-        },
-        {
-            "dvorana": [
-                "P"
-            ],
-            "g_id": "3",
-            "k_id": "3",
-            "p_id": "3",
-            "trajanje": 3
+            "g_id": 1,
+            "k_id": 0,
+            "p_id": 0,
+            "trajanje": 4
         }
     ],
     "nastavnici": [
         {
             "id": 0,
-            "preime": "Ime1 Prezime1"
-        },
-        {
-            "id": 1,
-            "preime": "Ime1 Prezime1"
-        },
-        {
-            "id": 2,
-            "preime": "Ime1 Prezime1"
-        },
-        {
-            "id": 3,
-            "preime": "Ime1 Prezime1"
-        },
-        {
-            "id": 4,
-            "preime": "Ime1 Prezime1"
-        },
-        {
-            "id": 5,
-            "preime": "Ime1 Prezime1"
-        },
-        {
-            "id": 6,
-            "preime": "Ime1 Prezime1"
+            "preime": "Borna Radinović"
         }
     ],
     "parametri": {
         "max_gen": 20,
         "mut": {
-            "a": 0.5,
-            "b": 0.9
+            "a": 0.1,
+            "b": 0.1
         },
-        "n_best": 5,
+        "n_best": 0.75,
         "n_pop": 10,
-        "p_cross": 0.75,
+        "p_cross": 0.1,
         "tournament_size": 3
     },
     "preferencije": {
+        "dnevni_limit": {
+            "aktivan": true,
+            "limit": 8
+        },
         "dvorane": {
             "aktivan": true,
-            "popunjenost": 0.35
+            "popunjenost": 0.4
         },
         "grupe": {
             "aktivan": true,
@@ -240,17 +89,15 @@
         },
         "kolegiji": [
             {
-                "k_id": "0",
+                "k_id": 0,
                 "odabir": [
                     {
                         "dvorane": [
-                            "0",
-                            "2",
-                            "3"
+                            0
                         ],
                         "termini": [
-                            "1-4",
-                            "5-10"
+                            "1-2",
+                            "1-4"
                         ]
                     }
                 ]
@@ -260,28 +107,14 @@
             {
                 "odabir": [
                     {
-                        "dan": "1",
+                        "dan": 1,
                         "termini": [
-                            "1-2",
-                            "5-10"
-                        ]
-                    },
-                    {
-                        "dan": "3",
-                        "termini": [
-                            "2-5",
-                            "6",
-                            "10-12"
-                        ]
-                    },
-                    {
-                        "dan": "4",
-                        "termini": [
-                            "2-7"
+                            "1-5",
+                            "1-4"
                         ]
                     }
                 ],
-                "p_id": "0"
+                "p_id": 0
             }
         ]
     },

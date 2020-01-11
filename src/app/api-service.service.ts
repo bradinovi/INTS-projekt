@@ -38,14 +38,14 @@ export class ApiServiceService {
         }
         this.saveToFilesSystem(result);
         this.fileConversionDone.next(true);
+        this.generiraniRaspored.next(result);
       }
     );
   }
 
   private saveToFilesSystem(response: any[]) {
-    response.forEach(data => {
-      const blob = new Blob([data], { type: 'text' });
-      saveAs(blob, "rezultat" + ".json");
-    });
+    var jsonse = JSON.stringify(response);
+    const blob = new Blob([jsonse], { type: 'application/json' });
+    saveAs(blob, "rezultat.json");
   }
 }
