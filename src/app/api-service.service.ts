@@ -13,7 +13,7 @@ export class ApiServiceService {
 
   private fileConversionDone = new Subject<boolean>();
   private internalServerError = new Subject<string>();
-
+  public raspored = [];
   private generiraniRaspored = new Subject<[]>();
 
   constructor(private http: HttpClient) { }
@@ -29,6 +29,7 @@ export class ApiServiceService {
   }
 
   sendData(data) {
+    this.saveToFilesSystem(data, "input");
     this.http.post<any>(API_URL + '', data).subscribe(
       (result) => {
         console.log(result);
@@ -36,16 +37,18 @@ export class ApiServiceService {
           this.internalServerError.next(result.error);
           return;
         }
-        this.saveToFilesSystem(result);
         this.fileConversionDone.next(true);
         this.generiraniRaspored.next(result);
+        this.saveToFilesSystem(result, "rezultat");
+        this.raspored = result;
+
       }
     );
   }
 
-  private saveToFilesSystem(response: any[]) {
+  private saveToFilesSystem(response: any[], name) {
     var jsonse = JSON.stringify(response);
     const blob = new Blob([jsonse], { type: 'application/json' });
-    saveAs(blob, "rezultat.json");
+    saveAs(blob, name + ".json");
   }
 }

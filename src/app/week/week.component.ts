@@ -66,7 +66,14 @@ export class WeekComponent implements OnInit {
   ) {
     console.log(this.viewDate)
     console.log(addHours(this.viewDate, 2))
-
+    this.generiraniRaspored = this.apiService.getgeneriraniRasporedListener().subscribe(
+      (data) => {
+        console.log("PODACI U KOMPONENTI")
+        console.log("data")
+        this.data = data;
+        this.dodajEvente();
+      }
+    );
   }
 
 
@@ -86,13 +93,10 @@ export class WeekComponent implements OnInit {
         daysInWeek: 5
       }
     };
+    this.data = this.apiService.raspored;
+    console.log(this.data)
+    this.dodajEvente();
 
-    this.generiraniRaspored = this.apiService.getgeneriraniRasporedListener().subscribe(
-      (data) => {
-        this.data = data;
-        this.dodajEvente();
-      }
-    );
 
   }
 
